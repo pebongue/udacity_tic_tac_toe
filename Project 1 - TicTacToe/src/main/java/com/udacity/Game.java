@@ -151,7 +151,56 @@ public class Game {
     public String checkGameWinner(char [][]grid){
         String result = "None";
         //Student code goes here ...
-        return result;
+        int countOh=0, countXh=0;
+        int countOv=0, countXv=0;
+        int mainDiagO = 0, mainDiagX = 0;
+        int secondDiagO = 0, secondDiagX = 0;
+        for(int i=0; i < 3; i++){
+            for (int j=0; j < 3; j++){
+                //check if the win is vertical
+                if (grid[j][i] == 'o') {
+                    countOv++;
+                    if (countOv==3) return "O wins vertically";
+                }
+                if (grid[j][i] == 'x') {
+                    countXv++;
+                    if (countXv==3) return "X wins vertically";
+                }
+
+                //check if the win is horizontal
+                if (grid[i][j] == 'o') {
+                    countOh++;
+                    if (countOh==3) return "O wins horizontal";
+                }
+                if (grid[i][j] == 'x') {
+                    countXh++;
+                    if (countXh==3) return "X wins horizontal";
+                }
+
+                //check if the win is main diagonal
+                if (grid[i][i] == 'o') {
+                    mainDiagO++;
+                    if (mainDiagO==3) return "O wins main diagonal";
+                }
+                if (grid[i][i] == 'x') {
+                    mainDiagX++;
+                    if (mainDiagX==3) return "X wins main diagonal";
+                }
+
+                //check if the win is second diagonal
+                if (grid[i][3 - i -1] == 'o') {
+                    secondDiagO++;
+                    if (secondDiagO==3) return "O wins second diagonal";
+                }
+                if (grid[i][3 - i - 1] == 'x') {
+                    secondDiagX++;
+                    if (secondDiagX==3) return "X wins second diagonal";
+                }
+            }
+        }
+        //if ((countOh+countXh==9) || (countOv+countXv==9)) result="Game ended in tie";
+
+        return "Game ended in tie";
     }
 
     /**
